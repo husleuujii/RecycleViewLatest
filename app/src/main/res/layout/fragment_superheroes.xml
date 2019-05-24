@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="wrap_content"
+                                             android:layout_height="wrap_content"
+                                             android:id="@+id/linearLayout" android:minWidth="400dp">
+
+    <TextView
+            android:id="@+id/name"
+            android:layout_width="159dp"
+            android:layout_height="37dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="26dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="11dp" app:layout_constraintBottom_toTopOf="@+id/gender"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" android:layout_marginStart="36dp"/>
+    <TextView
+            android:layout_width="67dp"
+            android:layout_height="35dp"
+            android:id="@+id/gender"
+            android:layout_marginStart="37dp"
+            app:layout_constraintStart_toEndOf="@+id/power" android:layout_marginTop="11dp"
+            app:layout_constraintTop_toBottomOf="@+id/name" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="50dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:layout_width="72dp"
+            android:layout_height="32dp"
+            android:id="@+id/power"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@+id/name" app:layout_constraintEnd_toStartOf="@+id/gender"
+            android:layout_marginEnd="37dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" android:layout_marginStart="70dp"/>
+    <ImageView
+            android:layout_width="111dp"
+            android:layout_height="99dp" app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/name"
+            android:layout_marginEnd="36dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+</android.support.constraint.ConstraintLayout>

@@ -9,9 +9,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import com.bumptech.glide.Glide
 
 import com.example.recycleview.dummy.DummyContent
 import com.example.recycleview.dummy.DummyContent.DummyItem
+import kotlinx.android.synthetic.main.fragment_superheroes.*
 
 
 class SuperHeroesFragment : Fragment() {
@@ -38,8 +42,11 @@ class SuperHeroesFragment : Fragment() {
         val names = listOf("Superman","Spiderman","Wonderwoman","Thor","Batman")
         val powers = listOf(100,90,89,92,70)
         val genders = listOf("M","M","F","M","M")
-
+        val image = intArrayOf(R.drawable.superman, R.drawable.spiderman, R.drawable.wonderwoman, R.drawable.thor, R.drawable.batman)
         val superheroes = ArrayList<HashMap<String, Any>>()
+
+
+
 
         for(i in 0..names.size-1) {
 
@@ -48,6 +55,8 @@ class SuperHeroesFragment : Fragment() {
             heroHashMap.put("name", names[i])
             heroHashMap.put("power", powers[i])
             heroHashMap.put("gender", genders[i])
+            heroHashMap.put("image", image[i])
+
 
             superheroes.add(heroHashMap)
         }
@@ -58,7 +67,7 @@ class SuperHeroesFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
-                adapter = MySuperHeroesRecyclerViewAdapter(activity as MainActivity, superheroes)
+                adapter = MySuperHeroesRecyclerViewAdapter(activity as MainActivity, fragmentManager!!, superheroes)
             }
         }
 

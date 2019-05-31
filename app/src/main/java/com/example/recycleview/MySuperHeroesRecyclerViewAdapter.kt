@@ -1,17 +1,21 @@
 package com.example.recycleview
 
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 
 
 import kotlinx.android.synthetic.main.fragment_superheroes.view.*
 
 class MySuperHeroesRecyclerViewAdapter(
-    private val activity: MainActivity,
+    private val mContext: MainActivity,
+    private val fragment: FragmentManager,
     private val mValues: ArrayList<HashMap<String, Any>>
 ) : RecyclerView.Adapter<MySuperHeroesRecyclerViewAdapter.ViewHolder>() {
 
@@ -29,10 +33,18 @@ class MySuperHeroesRecyclerViewAdapter(
         holder.mContentView.text = item.get("name").toString()
         holder.mPower.text = item.get("power").toString()
         holder.mGenger.text = item.get("gender").toString()
-
+        Glide.with(mContext).load(item["image"]).into(holder.mImage)
 
         holder.mView.setOnClickListener {
-            Toast.makeText(activity, item.get("name").toString(), Toast.LENGTH_LONG).show()
+
+
+            val bottomSheetFragment = HeroDetailDialogFragment.newInstance(
+                item["name"].toString(),
+                item["power"].toString(),
+                item["gender"].toString(),
+                item["image"].toString().toInt()
+            )
+            bottomSheetFragment.show(fragment, bottomSheetFragment.tag)
         }
 
 
@@ -44,7 +56,7 @@ class MySuperHeroesRecyclerViewAdapter(
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val mContentView: TextView = mView.name
         val mGenger: TextView = mView.gender
-
+        val mImage: ImageView = mView.imageView
         val mPower: TextView = mView.power
 
 
